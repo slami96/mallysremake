@@ -1,6 +1,4 @@
 'use client';
-import { LanguageProvider } from '@/components/LanguageContext';
-import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import Story from '@/components/Story';
 import Parallax from '@/components/Parallax';
@@ -12,8 +10,7 @@ import Footer from '@/components/Footer';
 
 export default function Home() {
   return (
-    <LanguageProvider>
-      <Header />
+    <main>
       <Hero />
       <Story />
       <Parallax />
@@ -22,6 +19,6 @@ export default function Home() {
       <Trust />
       <Contact />
       <Footer />
-    </LanguageProvider>
+    </main>
   );
 }
