@@ -15,13 +15,10 @@ export default function Header() {
       <div className="header__inner">
         <Link href="/" className="header__logo-wrap">
           <img
-            src="/images/logo.svg"
-            alt="Mallys"
+            src="/images/logo_header.png"
+            alt="Mallys — Handmade Porcelain"
             className="header__logo-img"
-            style={{ filter: 'brightness(0) invert(1) brightness(0.95) sepia(0.03)' }}
-            onError={(e) => { e.target.style.display = 'none'; }}
           />
-          <span className="header__logo-text">MALLYS</span>
         </Link>
 
         <nav className="header__nav">
