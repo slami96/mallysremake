@@ -154,6 +154,7 @@ export const allProducts = [
     descEn: "A signature necklace with floral relief decoration in porcelain.",
     material: { cz: "Porcelán, ocelové lanko", en: "Porcelain, steel wire" },
     dimensions: { cz: "přívěsek 4,5 cm, lanko 45 cm", en: "pendant 4.5 cm, wire 45 cm" },
+    featured: true,
   },
 
   // ── BRACELETS ──
