@@ -3,7 +3,7 @@ import { useApp } from './AppContext';
 import Link from 'next/link';
 
 export default function Header() {
-  const { lang, toggleLang, setLang, L, cartCount, setCartOpen } = useApp();
+  const { lang, setLang, L, cartCount, setCartOpen } = useApp();
 
   const go = (id) => {
     const el = document.getElementById(id);
@@ -14,9 +14,13 @@ export default function Header() {
     <header className="header">
       <div className="header__inner">
         <Link href="/" className="header__logo-wrap">
-          <img src="/images/logo.png" alt="Mallys"
+          <img
+            src="/images/logo.svg"
+            alt="Mallys"
             className="header__logo-img"
-            onError={(e) => { e.target.style.display = 'none'; }} />
+            style={{ filter: 'brightness(0) invert(1) brightness(0.95) sepia(0.03)' }}
+            onError={(e) => { e.target.style.display = 'none'; }}
+          />
           <span className="header__logo-text">MALLYS</span>
         </Link>
 
