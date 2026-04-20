@@ -43,14 +43,12 @@ img { display: block; max-width: 100%; }
 button { font-family: inherit; }
 a { color: inherit; text-decoration: none; }
 
-/* â•â•â•â•â•â•â•â•â•â•â• HEADER â•â•â•â•â•â•â•â•â•â•â• */
+/* ═══════════ HEADER ═══════════ */
 .header {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   height: var(--header-h);
-  background: rgba(247, 243, 238, 0.82);
-  backdrop-filter: blur(16px) saturate(1.2);
-  -webkit-backdrop-filter: blur(16px) saturate(1.2);
-  border-bottom: 1px solid rgba(212, 201, 184, 0.4);
+  background: var(--charcoal);
+  border-bottom: 1px solid rgba(247, 243, 238, 0.08);
   transition: all 0.4s var(--ease-out);
 }
 .header__inner {
@@ -67,21 +65,22 @@ a { color: inherit; text-decoration: none; }
 .header__logo-img { height: 36px; width: auto; }
 .header__logo-text {
   font-family: var(--serif); font-weight: 400; letter-spacing: 0.2em;
-  font-size: 20px; color: var(--charcoal);
+  font-size: 20px; color: var(--porcelain);
 }
 .header__nav {
   display: flex; gap: 36px; justify-content: center;
 }
 .header__link {
   font-size: 13px; font-weight: 500; cursor: pointer;
-  border: none; background: none; color: var(--charcoal);
+  border: none; background: none; color: rgba(247, 243, 238, 0.75);
   position: relative; padding: 6px 0;
   letter-spacing: 0.03em;
   transition: color 0.3s ease;
 }
+.header__link:hover { color: var(--porcelain); }
 .header__link::after {
   content: ""; position: absolute; left: 0; right: 0; bottom: 0;
-  height: 1px; background: var(--charcoal);
+  height: 1px; background: var(--porcelain);
   transform: scaleX(0); transform-origin: right;
   transition: transform 0.5s var(--ease);
 }
@@ -91,30 +90,31 @@ a { color: inherit; text-decoration: none; }
 }
 .lang-toggle {
   display: flex; align-items: center; gap: 2px;
-  padding: 4px; border: 1px solid var(--kiln); border-radius: 999px;
+  padding: 4px; border: 1px solid rgba(247, 243, 238, 0.2); border-radius: 999px;
   cursor: pointer; user-select: none;
-  background: rgba(247, 243, 238, 0.6);
+  background: rgba(247, 243, 238, 0.06);
   transition: border-color 0.3s ease;
 }
-.lang-toggle:hover { border-color: var(--stone); }
+.lang-toggle:hover { border-color: rgba(247, 243, 238, 0.4); }
 .lang-toggle__opt {
   padding: 4px 12px; border-radius: 999px;
   font-size: 11px; font-weight: 600; letter-spacing: 0.05em;
-  color: var(--stone); transition: all 0.3s var(--ease);
+  color: rgba(247, 243, 238, 0.5); transition: all 0.3s var(--ease);
   border: none; background: none; cursor: pointer;
 }
 .lang-toggle__opt--active {
-  background: var(--charcoal); color: var(--porcelain);
+  background: var(--porcelain); color: var(--charcoal);
 }
 .cart-btn {
   display: flex; align-items: center; gap: 8px;
-  padding: 8px 16px; border-radius: 999px; border: 1px solid var(--kiln);
-  background: rgba(247, 243, 238, 0.6); cursor: pointer;
-  font-size: 12px; font-weight: 500; color: var(--charcoal);
+  padding: 8px 16px; border-radius: 999px;
+  border: 1px solid rgba(247, 243, 238, 0.2);
+  background: rgba(247, 243, 238, 0.06); cursor: pointer;
+  font-size: 12px; font-weight: 500; color: var(--porcelain);
   transition: all 0.3s ease;
 }
 .cart-btn:hover {
-  border-color: var(--charcoal); background: var(--charcoal); color: var(--porcelain);
+  border-color: var(--porcelain); background: var(--porcelain); color: var(--charcoal);
 }
 .cart-btn__badge {
   background: var(--cobalt); color: var(--porcelain);
@@ -124,7 +124,7 @@ a { color: inherit; text-decoration: none; }
   padding: 0 5px;
 }
 
-/* â•â•â•â•â•â•â•â•â•â•â• HERO â•â•â•â•â•â•â•â•â•â•â• */
+/* ═══════════ HERO ═══════════ */
 .hero {
   position: relative; width: 100%;
   height: calc(100vh - var(--header-h));
@@ -254,7 +254,7 @@ a { color: inherit; text-decoration: none; }
   100% { transform: translateY(100%); }
 }
 
-/* â•â•â•â•â•â•â•â•â•â•â• SECTIONS â•â•â•â•â•â•â•â•â•â•â• */
+/* ═══════════ SECTIONS ═══════════ */
 .section {
   padding: 140px 40px; max-width: 1400px; margin: 0 auto;
 }
@@ -278,7 +278,7 @@ a { color: inherit; text-decoration: none; }
   font-style: italic;
 }
 
-/* â•â•â•â•â•â•â•â•â•â•â• STORY â•â•â•â•â•â•â•â•â•â•â• */
+/* ═══════════ STORY ═══════════ */
 .story {
   padding: 160px 40px; max-width: 1400px; margin: 0 auto;
 }
@@ -305,11 +305,6 @@ a { color: inherit; text-decoration: none; }
   font-size: 16px; color: var(--stone); line-height: 1.85;
   margin-bottom: 24px;
 }
-.story__text p:first-of-type::first-letter {
-  font-family: var(--serif); font-size: 68px; font-weight: 300;
-  float: left; line-height: 0.9; margin: 8px 10px 0 -4px;
-  color: var(--charcoal);
-}
 .story__link {
   display: inline-flex; align-items: center; gap: 10px;
   color: var(--charcoal); font-weight: 500; font-size: 13px;
@@ -326,7 +321,7 @@ a { color: inherit; text-decoration: none; }
 .story__link svg { transition: transform 0.4s var(--ease); }
 .story__link:hover svg { transform: translateX(6px); }
 
-/* â•â•â•â•â•â•â•â•â•â•â• PARALLAX LANDSCAPE â•â•â•â•â•â•â•â•â•â•â• */
+/* ═══════════ PARALLAX LANDSCAPE ═══════════ */
 .parallax {
   height: 540px; position: relative; overflow: hidden;
 }
@@ -363,7 +358,7 @@ a { color: inherit; text-decoration: none; }
   content: ""; width: 24px; height: 1px; background: rgba(247,243,238,0.5);
 }
 
-/* â•â•â•â•â•â•â•â•â•â•â• CRAFT SLIDER â•â•â•â•â•â•â•â•â•â•â• */
+/* ═══════════ CRAFT SLIDER ═══════════ */
 .craft {
   background: var(--cream); padding: 140px 40px;
   position: relative; overflow: hidden;
@@ -431,7 +426,7 @@ a { color: inherit; text-decoration: none; }
   opacity: 0.7;
 }
 
-/* â•â•â•â•â•â•â•â•â•â•â• PRODUCTS GRID â•â•â•â•â•â•â•â•â•â•â• */
+/* ═══════════ PRODUCTS GRID ═══════════ */
 .products {
   padding: 140px 40px; max-width: 1400px; margin: 0 auto;
 }
@@ -518,7 +513,7 @@ a { color: inherit; text-decoration: none; }
 .products__btn svg { transition: transform 0.4s var(--ease); }
 .products__btn:hover svg { transform: translateX(6px); }
 
-/* â•â•â•â•â•â•â•â•â•â•â• TRUST â•â•â•â•â•â•â•â•â•â•â• */
+/* ═══════════ TRUST ═══════════ */
 .trust {
   padding: 60px 40px;
   border-top: 1px solid var(--kiln);
@@ -542,7 +537,7 @@ a { color: inherit; text-decoration: none; }
   letter-spacing: 0.02em;
 }
 
-/* â•â•â•â•â•â•â•â•â•â•â• CONTACT â•â•â•â•â•â•â•â•â•â•â• */
+/* ═══════════ CONTACT ═══════════ */
 .contact {
   padding: 140px 40px; max-width: 1400px; margin: 0 auto;
 }
@@ -601,7 +596,7 @@ a { color: inherit; text-decoration: none; }
   transform: translateY(-2px);
 }
 
-/* â•â•â•â•â•â•â•â•â•â•â• FOOTER â•â•â•â•â•â•â•â•â•â•â• */
+/* ═══════════ FOOTER ═══════════ */
 .footer {
   background: var(--charcoal); color: var(--porcelain);
   padding: 100px 40px 40px;
@@ -662,7 +657,7 @@ a { color: inherit; text-decoration: none; }
   color: rgba(247,243,238,0.6);
 }
 
-/* â•â•â•â•â•â•â•â•â•â•â• CART DRAWER â•â•â•â•â•â•â•â•â•â•â• */
+/* ═══════════ CART DRAWER ═══════════ */
 .drawer-backdrop {
   position: fixed; inset: 0; z-index: 200;
   background: rgba(44, 40, 38, 0.5); backdrop-filter: blur(6px);
@@ -770,7 +765,7 @@ a { color: inherit; text-decoration: none; }
 }
 .cart-checkout:hover { background: var(--cobalt); }
 
-/* â•â•â•â•â•â•â•â•â•â•â• PRODUCT DETAIL DRAWER â•â•â•â•â•â•â•â•â•â•â• */
+/* ═══════════ PRODUCT DETAIL DRAWER ═══════════ */
 .pdetail { width: 100%; max-width: 720px; }
 .pdetail__body { padding: 0; }
 .pdetail__image {
@@ -839,7 +834,7 @@ a { color: inherit; text-decoration: none; }
   letter-spacing: 0.05em;
 }
 
-/* â•â•â•â•â•â•â•â•â•â•â• SHOP PAGE â•â•â•â•â•â•â•â•â•â•â• */
+/* ═══════════ SHOP PAGE ═══════════ */
 .shop-hero {
   padding: calc(var(--header-h) + 80px) 40px 60px;
   background: var(--cream);
@@ -881,7 +876,7 @@ a { color: inherit; text-decoration: none; }
 }
 .shop__sort:focus { border-color: var(--charcoal); }
 
-/* â•â•â•â•â•â•â•â•â•â•â• MOBILE â•â•â•â•â•â•â•â•â•â•â• */
+/* ═══════════ MOBILE ═══════════ */
 @media (max-width: 900px) {
   .header__nav { display: none; }
   .header__inner { grid-template-columns: 1fr auto; }
