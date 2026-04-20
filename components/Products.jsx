@@ -1,79 +1,255 @@
-'use client';
-import { useEffect, useRef } from 'react';
-import { useApp } from './AppContext';
-import { featuredProducts } from '@/data/products';
-import Img from './Img';
-import Link from 'next/link';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+export const heroImages = [
+  "/images/site/hero_01.jpg",
+  "/images/site/hero_02.jpg",
+  "/images/site/hero_03.jpg",
+  "/images/site/hero_04.jpg",
+];
 
-export default function Products() {
-  const { lang, L, setProductDetail } = useApp();
-  const ref = useRef(null);
+export const categories = [
+  { id: "all", labelKey: "cat_all" },
+  { id: "brooches", labelKey: "cat_brooches" },
+  { id: "earrings", labelKey: "cat_earrings" },
+  { id: "necklaces", labelKey: "cat_necklaces" },
+  { id: "bracelets", labelKey: "cat_bracelets" },
+  { id: "cups", labelKey: "cat_cups" },
+];
 
-  useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-    const ctx = gsap.context(() => {
-      gsap.from('.products__header > *', {
-        opacity: 0, y: 30, duration: 1, stagger: 0.1, ease: 'power3.out',
-        scrollTrigger: { trigger: ref.current, start: 'top 75%' },
-      });
-      gsap.from('.pcard', {
-        opacity: 0, y: 60, duration: 1, stagger: 0.1, ease: 'power3.out',
-        scrollTrigger: { trigger: '.products__grid', start: 'top 80%' },
-      });
-    }, ref);
-    return () => ctx.revert();
-  }, []);
+export const allProducts = [
+  // ── BROOCHES ──
+  {
+    id: "brooches-01", category: "brooches",
+    nameCz: "Ptáček s vločkou", nameEn: "Snowflake Bird",
+    typeCz: "Brož", typeEn: "Brooch",
+    price: 340, sku: "504",
+    img: "/images/products/brooches-01_hero.jpg",
+    descCz: "Porcelánový ptáček s jemnou sněhovou vločkou — lehký jako pírko, roztomilý jako zimní ráno.",
+    descEn: "A porcelain bird with a delicate snowflake — light as a feather, charming as a winter morning.",
+    material: { cz: "Porcelán, kovový zapínací mechanismus", en: "Porcelain, metal pin" },
+    dimensions: { cz: "cca 4 × 3 cm", en: "approx. 4 × 3 cm" },
+  },
+  {
+    id: "brooches-02", category: "brooches",
+    nameCz: "Vyšívaná brož", nameEn: "Embroidered Brooch",
+    typeCz: "Brož", typeEn: "Brooch",
+    price: 490, sku: "353",
+    img: "/images/products/brooches-02_hero.jpg",
+    descCz: "Autorská brož s plastickým dekorem inspirovaným tradiční výšivkou.",
+    descEn: "A signature brooch with relief decoration inspired by traditional embroidery.",
+    material: { cz: "Porcelán, barevné glazury", en: "Porcelain, colored glazes" },
+    dimensions: { cz: "cca 5 × 3,5 cm", en: "approx. 5 × 3.5 cm" },
+    featured: true,
+  },
+  {
+    id: "brooches-03", category: "brooches",
+    nameCz: "Králíček Origami", nameEn: "Origami Rabbit",
+    typeCz: "Brož", typeEn: "Brooch",
+    price: 340, sku: "281",
+    img: "/images/products/brooches-03_hero.jpg",
+    descCz: "Geometrický origami králíček — čisté linie, jemná glazura.",
+    descEn: "A geometric origami rabbit — clean lines, delicate glaze.",
+    material: { cz: "Porcelán", en: "Porcelain" },
+    dimensions: { cz: "cca 4 × 4 cm", en: "approx. 4 × 4 cm" },
+  },
+  {
+    id: "brooches-04", category: "brooches",
+    nameCz: "Medvídek", nameEn: "Little Bear",
+    typeCz: "Brož", typeEn: "Brooch",
+    price: 340, sku: "460",
+    img: "/images/products/brooches-04_hero.jpg",
+    descCz: "Medvídek z porcelánu — ideální společník na klopě svetru či kabátu.",
+    descEn: "A porcelain bear — the perfect companion for your sweater or coat lapel.",
+    material: { cz: "Porcelán", en: "Porcelain" },
+    dimensions: { cz: "cca 4 × 3 cm", en: "approx. 4 × 3 cm" },
+  },
 
-  return (
-    <section className="products" id="products" ref={ref}>
-      <div className="products__header">
-        <div>
-          <div className="section__label">{L('pieces_label')}</div>
-          <h2 className="section__title">
-            {L('pieces_title').split(' ').map((w, i, a) =>
-              i === a.length - 1 ? <em key={i}>{w}</em> : <span key={i}>{w} </span>
-            )}
-          </h2>
-        </div>
-      </div>
+  // ── EARRINGS ──
+  {
+    id: "earrings-01", category: "earrings",
+    nameCz: "Sedmikrásky", nameEn: "Daisies",
+    typeCz: "Náušnice · Puzety", typeEn: "Earrings · Studs",
+    price: 295, sku: "441",
+    img: "/images/products/earrings-01_hero.jpg",
+    descCz: "Drobné sedmikrásky z porcelánu — lehké a jemné, rozzáří každodenní outfit.",
+    descEn: "Tiny porcelain daisies — light and delicate, they brighten everyday outfits.",
+    material: { cz: "Porcelán, chirurgická ocel", en: "Porcelain, surgical steel" },
+    dimensions: { cz: "ø 1 cm", en: "ø 1 cm" },
+  },
+  {
+    id: "earrings-02", category: "earrings",
+    nameCz: "Sněhové vločky", nameEn: "Snowflakes",
+    typeCz: "Náušnice · Puzety", typeEn: "Earrings · Studs",
+    price: 390, sku: "182",
+    img: "/images/products/earrings-02_hero.jpg",
+    descCz: "Jemně tvarované sněhové vločky — každý pár je unikátní originál.",
+    descEn: "Delicately shaped snowflakes — each pair is a unique original.",
+    material: { cz: "Porcelán, stříbro", en: "Porcelain, silver" },
+    dimensions: { cz: "ø 1,5 cm", en: "ø 1.5 cm" },
+    featured: true,
+  },
+  {
+    id: "earrings-03", category: "earrings",
+    nameCz: "Třešničky", nameEn: "Cherries",
+    typeCz: "Náušnice · Závěsy", typeEn: "Earrings · Drops",
+    price: 760, sku: "305",
+    img: "/images/products/earrings-03_hero.jpg",
+    descCz: "Závěsné třešničky — hravý a elegantní doplněk pro výjimečné chvíle.",
+    descEn: "Cherry drops — a playful yet elegant accent for special moments.",
+    material: { cz: "Porcelán, stříbro", en: "Porcelain, silver" },
+    dimensions: { cz: "délka 4 cm", en: "length 4 cm" },
+  },
+  {
+    id: "earrings-04", category: "earrings",
+    nameCz: "Uzlíci na ucho", nameEn: "Knot Drops",
+    typeCz: "Náušnice · Závěsy", typeEn: "Earrings · Drops",
+    price: 760, sku: "311",
+    img: "/images/products/earrings-04_hero.jpg",
+    descCz: "Porcelánové uzlíky na závěsech — elegantní a vzdušně lehké.",
+    descEn: "Porcelain knots on drops — elegant and airy.",
+    material: { cz: "Porcelán, stříbro", en: "Porcelain, silver" },
+    dimensions: { cz: "délka 3,5 cm", en: "length 3.5 cm" },
+  },
 
-      <div className="products__grid">
-        {featuredProducts.map((p) => (
-          <div key={p.id} className="pcard" onClick={() => setProductDetail(p)}>
-            <div className="pcard__image-wrap">
-              <Img src={p.img} alt={p.nameCz} />
-              <div className="pcard__quick">
-                <button className="pcard__quick-btn" onClick={(e) => { e.stopPropagation(); setProductDetail(p); }}>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
-                    <circle cx="11" cy="11" r="8"/>
-                    <line x1="21" y1="21" x2="16.65" y2="16.65"/>
-                  </svg>
-                  <span>{L('add_to_cart')}</span>
-                </button>
-              </div>
-            </div>
-            <div className="pcard__info">
-              <div>
-                <div className="pcard__name">{p.nameCz}</div>
-                <div className="pcard__type">{lang === 'cz' ? p.typeCz : p.typeEn}</div>
-              </div>
-              <div className="pcard__price">{p.price} Kč</div>
-            </div>
-          </div>
-        ))}
-      </div>
+  // ── NECKLACES ──
+  {
+    id: "necklaces-01", category: "necklaces",
+    nameCz: '"Na dotek"', nameEn: '"Na dotek"',
+    typeCz: "Náhrdelník", typeEn: "Necklace",
+    price: 760, sku: "512",
+    img: "/images/products/necklaces-01_hero.jpg",
+    descCz: "Náhrdelník s plastickým dekorem bodlinek — musíte si ho prostě osahat. Uklidňující pocit při každém dotyku.",
+    descEn: "A necklace with raised textural dots — you simply have to touch it. A calming sensation with every contact.",
+    material: { cz: "Porcelán, ocelové lanko", en: "Porcelain, steel wire" },
+    dimensions: { cz: "přívěsek 4 × 1,5 cm, lanko 45 cm", en: "pendant 4 × 1.5 cm, wire 45 cm" },
+    featured: true,
+  },
+  {
+    id: "necklaces-02", category: "necklaces",
+    nameCz: "Ptáček Uzlík", nameEn: "Knot Bird",
+    typeCz: "Přívěsek", typeEn: "Pendant",
+    price: 590, sku: "177",
+    img: "/images/products/necklaces-02_hero.jpg",
+    descCz: "Lehký dutý ptáček z porcelánu na jemném lanku.",
+    descEn: "A lightweight hollow porcelain bird on a delicate wire.",
+    material: { cz: "Porcelán, ocelové lanko", en: "Porcelain, steel wire" },
+    dimensions: { cz: "ptáček 2,5 cm, lanko 45 cm", en: "bird 2.5 cm, wire 45 cm" },
+  },
+  {
+    id: "necklaces-03", category: "necklaces",
+    nameCz: "Vzpomínky na moře", nameEn: "Memories of the Sea",
+    typeCz: "Náhrdelník", typeEn: "Necklace",
+    price: 750, sku: "317",
+    img: "/images/products/necklaces-03_hero.jpg",
+    descCz: "Náhrdelník inspirovaný mořem — jemné barvy a struktury připomínající pobřeží.",
+    descEn: "A necklace inspired by the sea — soft colors and textures that recall the coastline.",
+    material: { cz: "Porcelán, stříbrný řetízek", en: "Porcelain, silver chain" },
+    dimensions: { cz: "přívěsek 3 cm, řetízek 50 cm", en: "pendant 3 cm, chain 50 cm" },
+  },
+  {
+    id: "necklaces-04", category: "necklaces",
+    nameCz: "Doteky květin", nameEn: "Flower Touch",
+    typeCz: "Náhrdelník", typeEn: "Necklace",
+    price: 850, sku: "511",
+    img: "/images/products/necklaces-04_hero.jpg",
+    descCz: "Autorský náhrdelník s květinovým plastickým dekorem z porcelánu.",
+    descEn: "A signature necklace with floral relief decoration in porcelain.",
+    material: { cz: "Porcelán, ocelové lanko", en: "Porcelain, steel wire" },
+    dimensions: { cz: "přívěsek 4,5 cm, lanko 45 cm", en: "pendant 4.5 cm, wire 45 cm" },
+    featured: true,
+  },
 
-      <div className="products__cta-wrap">
-        <Link href="/shop" className="products__btn">
-          <span>{L('pieces_cta')}</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
-            <line x1="5" y1="12" x2="19" y2="12"/>
-            <polyline points="12 5 19 12 12 19"/>
-          </svg>
-        </Link>
-      </div>
-    </section>
-  );
-}
+  // ── BRACELETS ──
+  {
+    id: "bracelets-01", category: "bracelets",
+    nameCz: "Uzlíkový náramek", nameEn: "Knot Bracelet",
+    typeCz: "Náramek", typeEn: "Bracelet",
+    price: 590, sku: "UZL-N",
+    img: "/images/products/bracelets-01_hero.jpg",
+    descCz: "Porcelánové uzlíky navlečené na pružném lanku — hravý a originální kousek.",
+    descEn: "Porcelain knots strung on elastic wire — a playful and original piece.",
+    material: { cz: "Porcelán, elastické lanko", en: "Porcelain, elastic wire" },
+    dimensions: { cz: "obvod 17-19 cm", en: "circumference 17-19 cm" },
+    featured: true,
+  },
+  {
+    id: "bracelets-02", category: "bracelets",
+    nameCz: "Ptáčkový náramek", nameEn: "Bird Bracelet",
+    typeCz: "Náramek", typeEn: "Bracelet",
+    price: 490, sku: "PTA-N",
+    img: "/images/products/bracelets-02_hero.jpg",
+    descCz: "Drobní porcelánoví ptáčci na jemném elastickém lanku.",
+    descEn: "Tiny porcelain birds on a delicate elastic wire.",
+    material: { cz: "Porcelán, elastické lanko", en: "Porcelain, elastic wire" },
+    dimensions: { cz: "obvod 17-19 cm", en: "circumference 17-19 cm" },
+  },
+  {
+    id: "bracelets-03", category: "bracelets",
+    nameCz: "Perlový mix", nameEn: "Pearl Mix",
+    typeCz: "Náramek", typeEn: "Bracelet",
+    price: 450, sku: "PRL-N",
+    img: "/images/products/bracelets-03_hero.jpg",
+    descCz: "Kombinace porcelánových korálků různých tvarů a velikostí.",
+    descEn: "A mix of porcelain beads in various shapes and sizes.",
+    material: { cz: "Porcelán, elastické lanko", en: "Porcelain, elastic wire" },
+    dimensions: { cz: "obvod 17-19 cm", en: "circumference 17-19 cm" },
+  },
+  {
+    id: "bracelets-04", category: "bracelets",
+    nameCz: "Květinový náramek", nameEn: "Flower Bracelet",
+    typeCz: "Náramek", typeEn: "Bracelet",
+    price: 520, sku: "KVT-N",
+    img: "/images/products/bracelets-04_hero.jpg",
+    descCz: "Náramek s drobnými porcelánovými kvítky — jemný a ženský.",
+    descEn: "A bracelet with tiny porcelain flowers — delicate and feminine.",
+    material: { cz: "Porcelán, elastické lanko", en: "Porcelain, elastic wire" },
+    dimensions: { cz: "obvod 17-19 cm", en: "circumference 17-19 cm" },
+  },
+
+  // ── CUPS & BOWLS ──
+  {
+    id: "cups-01", category: "cups",
+    nameCz: 'Hrneček "Obláčkový" 60ml', nameEn: '"Cloud" Espresso Cup 60ml',
+    typeCz: "Hrneček · Espresso", typeEn: "Cup · Espresso",
+    price: 390, sku: "472",
+    img: "/images/products/cups-01_hero.jpg",
+    descCz: "Malinký espresso hrneček s obláčkovým dekorem — radost z každého rána.",
+    descEn: "A tiny espresso cup with cloud-textured surface — joy in every morning.",
+    material: { cz: "Porcelán, vhodný do myčky", en: "Porcelain, dishwasher-safe" },
+    dimensions: { cz: "objem 60 ml, výška 5 cm", en: "60 ml, height 5 cm" },
+  },
+  {
+    id: "cups-02", category: "cups",
+    nameCz: 'Hrneček "Rozkvetlá louka" 125ml', nameEn: '"Blooming Meadow" Cup 125ml',
+    typeCz: "Hrneček", typeEn: "Cup",
+    price: 420, sku: "380",
+    img: "/images/products/cups-02_hero.jpg",
+    descCz: "Hrneček s motivem rozkvetlé louky — ručně malovaný, každý kousek jiný.",
+    descEn: "A cup with a blooming meadow motif — hand-painted, each piece unique.",
+    material: { cz: "Porcelán", en: "Porcelain" },
+    dimensions: { cz: "objem 125 ml, výška 7 cm", en: "125 ml, height 7 cm" },
+  },
+  {
+    id: "cups-03", category: "cups",
+    nameCz: "Miska na zmrzlinu", nameEn: "Ice Cream Bowl",
+    typeCz: "Miska", typeEn: "Bowl",
+    price: 350, sku: "463",
+    img: "/images/products/cups-03_hero.jpg",
+    descCz: "Hravá porcelánová miska ideální na zmrzlinu, müsli nebo drobné pochoutky.",
+    descEn: "A playful porcelain bowl, perfect for ice cream, müsli or small treats.",
+    material: { cz: "Porcelán", en: "Porcelain" },
+    dimensions: { cz: "ø 12 cm, výška 5 cm", en: "ø 12 cm, height 5 cm" },
+  },
+  {
+    id: "cups-04", category: "cups",
+    nameCz: "Hrnek pro horaly 400ml", nameEn: "Mountaineer's Mug 400ml",
+    typeCz: "Hrnek · Velký", typeEn: "Mug · Large",
+    price: 650, sku: "404",
+    img: "/images/products/cups-04_hero.jpg",
+    descCz: "Velký hrnek pro milovníky hor — robustní, ale stále ručně tvořený porcelán.",
+    descEn: "A large mug for mountain lovers — robust yet still handmade porcelain.",
+    material: { cz: "Porcelán", en: "Porcelain" },
+    dimensions: { cz: "objem 400 ml, výška 10 cm", en: "400 ml, height 10 cm" },
+    featured: true,
+  },
+];
+
+export const featuredProducts = allProducts.filter(p => p.featured);
