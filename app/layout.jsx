@@ -2,7 +2,6 @@ import './globals.css';
 import { AppProvider } from '@/components/AppContext';
 import Header from '@/components/Header';
 import CartDrawer from '@/components/CartDrawer';
-import ProductDetail from '@/components/ProductDetail';
 
 export const metadata = {
   title: 'Mallys — Handmade Porcelain from Broumovsko',
@@ -21,7 +20,6 @@ export default function RootLayout({ children }) {
         <AppProvider>
           <Header />
           <CartDrawer />
-          <ProductDetail />
           {children}
         </AppProvider>
       </body>
