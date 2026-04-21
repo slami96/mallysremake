@@ -1,9 +1,16 @@
 'use client';
 import { useApp } from './AppContext';
+import { useRouter } from 'next/navigation';
 import Img from './Img';
 
 export default function CartDrawer() {
   const { cartOpen, setCartOpen, cart, cartTotal, updateQty, removeItem, L, lang } = useApp();
+  const router = useRouter();
+
+  const handleCheckout = () => {
+    setCartOpen(false);
+    router.push('/checkout');
+  };
 
   return (
     <>
@@ -68,7 +75,7 @@ export default function CartDrawer() {
               <span className="cart-total__val">{cartTotal} Kč</span>
             </div>
             <div className="cart-shipping-note">{L('cart_shipping')}</div>
-            <button className="cart-checkout">{L('cart_checkout')}</button>
+            <button className="cart-checkout" onClick={handleCheckout}>{L('cart_checkout')}</button>
           </div>
         )}
       </aside>
