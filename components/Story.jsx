@@ -2,6 +2,7 @@
 import { useEffect, useRef } from 'react';
 import { useApp } from './AppContext';
 import Img from './Img';
+import Link from 'next/link';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -41,13 +42,12 @@ export default function Story() {
             <p>{L('story_p1')}</p>
             <p>{L('story_p2')}</p>
           </div>
-          <button className="story__link">
+          <Link href="/about" className="story__link">
             <span>{L('story_link')}</span>
             <svg width="16" height="12" viewBox="0 0 24 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
-              <line x1="0" y1="8" x2="22" y2="8"/>
-              <polyline points="16 2 22 8 16 14"/>
+              <line x1="0" y1="8" x2="22" y2="8"/><polyline points="16 2 22 8 16 14"/>
             </svg>
-          </button>
+          </Link>
         </div>
       </div>
     </section>
