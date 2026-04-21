@@ -8,10 +8,11 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 function ProductCard({ p }) {
-  const { lang, L, addToCart, setProductDetail } = useApp();
+  const { lang, L, addToCart } = useApp();
   const [justAdded, setJustAdded] = useState(false);
 
   const handleAdd = (e) => {
+    e.preventDefault();
     e.stopPropagation();
     addToCart(p, 1);
     setJustAdded(true);
@@ -19,16 +20,12 @@ function ProductCard({ p }) {
   };
 
   return (
-    <div className="pcard">
-      <div className="pcard__image-wrap" onClick={() => setProductDetail(p)}>
+    <Link href={`/shop/${p.id}`} className="pcard">
+      <div className="pcard__image-wrap">
         <Img src={p.img} alt={p.nameCz} />
         <div className="pcard__hover-actions">
           <button className="pcard__action-btn pcard__action-btn--add" onClick={handleAdd}>
             {justAdded ? L('added_to_cart') : L('add_to_cart')}
-          </button>
-          <button className="pcard__action-btn pcard__action-btn--view"
-            onClick={(e) => { e.stopPropagation(); setProductDetail(p); }}>
-            {L('quick_view')}
           </button>
         </div>
       </div>
@@ -39,7 +36,7 @@ function ProductCard({ p }) {
         </div>
         <div className="pcard__price">{p.price} Kč</div>
       </div>
-    </div>
+    </Link>
   );
 }
 
