@@ -14,11 +14,7 @@ export default function Header() {
     <header className="header">
       <div className="header__inner">
         <Link href="/" className="header__logo-wrap">
-          <img
-            src="/images/logo_header.png"
-            alt="Mallys — Handmade Porcelain"
-            className="header__logo-img"
-          />
+          <span className="header__logo-text">Mallys</span>
         </Link>
 
         <nav className="header__nav">
@@ -43,7 +39,7 @@ export default function Header() {
               <line x1="3" y1="6" x2="21" y2="6"/>
               <path d="M16 10a4 4 0 0 1-8 0"/>
             </svg>
-            <span>Cart</span>
+            <span>{L('cart_label')}</span>
             {cartCount > 0 && <span className="cart-btn__badge">{cartCount}</span>}
           </button>
         </div>
