@@ -13,7 +13,6 @@ export default function Footer() {
           <img src="/images/logo_header.png" alt="Mallys" className="footer__logo-img" />
           <p className="footer__desc">{L('footer_desc')}</p>
         </div>
-
         <div>
           <div className="footer__col-title">{L('footer_links')}</div>
           <Link href="/shop" className="footer__link">{L('nav_shop')}</Link>
@@ -21,14 +20,12 @@ export default function Footer() {
           <a className="footer__link" onClick={() => go('craft')}>{L('nav_process')}</a>
           <a className="footer__link" onClick={() => go('contact')}>{L('nav_contact')}</a>
         </div>
-
         <div>
           <div className="footer__col-title">{L('footer_legal')}</div>
           <a className="footer__link">{L('footer_terms')}</a>
           <a className="footer__link">{L('footer_privacy')}</a>
           <a className="footer__link">{L('footer_shipping')}</a>
         </div>
-
         <div>
           <div className="footer__col-title">{L('footer_newsletter')}</div>
           <p className="footer__nl-desc">{L('footer_nl_desc')}</p>
@@ -42,7 +39,6 @@ export default function Footer() {
           </form>
         </div>
       </div>
-
       <div className="footer__bottom">
         <span>© 2026 Mallys. {L('copyright')}</span>
         <em>{L('made_in')}</em>
