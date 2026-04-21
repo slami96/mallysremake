@@ -4,13 +4,15 @@ import { useApp } from '@/components/AppContext';
 import { allProducts, categories } from '@/data/products';
 import Img from '@/components/Img';
 import Footer from '@/components/Footer';
+import Link from 'next/link';
 import { gsap } from 'gsap';
 
 function ShopCard({ p }) {
-  const { lang, L, addToCart, setProductDetail } = useApp();
+  const { lang, L, addToCart } = useApp();
   const [justAdded, setJustAdded] = useState(false);
 
   const handleAdd = (e) => {
+    e.preventDefault();
     e.stopPropagation();
     addToCart(p, 1);
     setJustAdded(true);
@@ -18,17 +20,13 @@ function ShopCard({ p }) {
   };
 
   return (
-    <div className="pcard" onClick={() => setProductDetail(p)}>
+    <Link href={`/shop/${p.id}`} className="pcard">
       <div className="pcard__image-wrap">
         <Img src={p.img} alt={p.nameCz} />
         {p.featured && <div className="pcard__badge">{L('popular')}</div>}
         <div className="pcard__hover-actions">
           <button className="pcard__action-btn pcard__action-btn--add" onClick={handleAdd}>
             {justAdded ? L('added_to_cart') : L('add_to_cart')}
-          </button>
-          <button className="pcard__action-btn pcard__action-btn--view"
-            onClick={(e) => { e.stopPropagation(); setProductDetail(p); }}>
-            {L('quick_view')}
           </button>
         </div>
       </div>
@@ -39,7 +37,7 @@ function ShopCard({ p }) {
         </div>
         <div className="pcard__price">{p.price} Kč</div>
       </div>
-    </div>
+    </Link>
   );
 }
 
@@ -62,11 +60,6 @@ export default function ShopPage() {
     gsap.fromTo('.pcard', { opacity: 0, y: 40 },
       { opacity: 1, y: 0, duration: 0.8, stagger: 0.06, ease: 'power3.out', clearProps: 'all' });
   }, [activeCat, sort]);
-
-  useEffect(() => {
-    gsap.fromTo('.shop-hero__title, .shop-hero__sub', { opacity: 0, y: 30 },
-      { opacity: 1, y: 0, duration: 1.2, stagger: 0.15, ease: 'power3.out' });
-  }, []);
 
   return (
     <>
