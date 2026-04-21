@@ -10,14 +10,14 @@ export default function Footer() {
     <footer className="footer">
       <div className="footer__inner">
         <div>
-          <div className="footer__logo">MALLYS</div>
+          <img src="/images/logo_header.png" alt="Mallys" className="footer__logo-img" />
           <p className="footer__desc">{L('footer_desc')}</p>
         </div>
 
         <div>
           <div className="footer__col-title">{L('footer_links')}</div>
           <Link href="/shop" className="footer__link">{L('nav_shop')}</Link>
-          <a className="footer__link" onClick={() => go('story')}>{L('nav_story')}</a>
+          <Link href="/about" className="footer__link">{L('nav_story')}</Link>
           <a className="footer__link" onClick={() => go('craft')}>{L('nav_process')}</a>
           <a className="footer__link" onClick={() => go('contact')}>{L('nav_contact')}</a>
         </div>
@@ -36,8 +36,7 @@ export default function Footer() {
             <input className="footer__nl-input" type="email" placeholder={L('footer_nl_placeholder')} />
             <button className="footer__nl-btn" type="submit">
               <svg width="20" height="12" viewBox="0 0 24 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
-                <line x1="0" y1="8" x2="22" y2="8"/>
-                <polyline points="16 2 22 8 16 14"/>
+                <line x1="0" y1="8" x2="22" y2="8"/><polyline points="16 2 22 8 16 14"/>
               </svg>
             </button>
           </form>
