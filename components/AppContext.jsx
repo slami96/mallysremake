@@ -8,30 +8,32 @@ export function AppProvider({ children }) {
   const [lang, setLang] = useState('en');
   const [cart, setCart] = useState([]);
   const [cartOpen, setCartOpen] = useState(false);
-  const [productDetail, setProductDetail] = useState(null);
+  const [darkMode, setDarkMode] = useState(false);
 
-  // Load cart + lang from localStorage on mount
   useEffect(() => {
     const savedLang = localStorage.getItem('mallys_lang');
     const savedCart = localStorage.getItem('mallys_cart');
+    const savedDark = localStorage.getItem('mallys_dark');
     if (savedLang === 'cz' || savedLang === 'en') setLang(savedLang);
-    if (savedCart) {
-      try { setCart(JSON.parse(savedCart)); } catch {}
-    }
+    if (savedCart) { try { setCart(JSON.parse(savedCart)); } catch {} }
+    if (savedDark === 'true') setDarkMode(true);
   }, []);
 
   useEffect(() => { localStorage.setItem('mallys_lang', lang); }, [lang]);
   useEffect(() => { localStorage.setItem('mallys_cart', JSON.stringify(cart)); }, [cart]);
+  useEffect(() => {
+    localStorage.setItem('mallys_dark', darkMode);
+    document.documentElement.setAttribute('data-theme', darkMode ? 'dark' : 'light');
+  }, [darkMode]);
 
   const L = useCallback((key) => translations[key]?.[lang] || key, [lang]);
   const toggleLang = useCallback(() => setLang(p => p === 'cz' ? 'en' : 'cz'), []);
+  const toggleDark = useCallback(() => setDarkMode(p => !p), []);
 
   const addToCart = useCallback((product, qty = 1) => {
     setCart(prev => {
       const existing = prev.find(i => i.id === product.id);
-      if (existing) {
-        return prev.map(i => i.id === product.id ? { ...i, qty: i.qty + qty } : i);
-      }
+      if (existing) return prev.map(i => i.id === product.id ? { ...i, qty: i.qty + qty } : i);
       return [...prev, { ...product, qty }];
     });
     setCartOpen(true);
@@ -42,9 +44,7 @@ export function AppProvider({ children }) {
     setCart(prev => prev.map(i => i.id === id ? { ...i, qty } : i));
   }, []);
 
-  const removeItem = useCallback((id) => {
-    setCart(prev => prev.filter(i => i.id !== id));
-  }, []);
+  const removeItem = useCallback((id) => setCart(prev => prev.filter(i => i.id !== id)), []);
 
   const cartCount = cart.reduce((sum, i) => sum + i.qty, 0);
   const cartTotal = cart.reduce((sum, i) => sum + i.price * i.qty, 0);
@@ -54,7 +54,7 @@ export function AppProvider({ children }) {
       lang, setLang, toggleLang, L,
       cart, cartCount, cartTotal, addToCart, updateQty, removeItem,
       cartOpen, setCartOpen,
-      productDetail, setProductDetail,
+      darkMode, toggleDark,
     }}>
       {children}
     </AppContext.Provider>
