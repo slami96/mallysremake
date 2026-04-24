@@ -1,39 +1,24 @@
 'use client';
 import Link from 'next/link';
 import { useApp } from './AppContext';
-import { usePathname, useRouter } from 'next/navigation';
 
 export default function Footer() {
-  const { L, darkMode } = useApp();
-  const pathname = usePathname();
-  const router = useRouter();
-
-  const scrollOrNavigate = (sectionId) => {
-    if (pathname === '/') {
-      const el = document.getElementById(sectionId);
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
-    } else {
-      router.push('/#' + sectionId);
-    }
-  };
+  const { L } = useApp();
+  const go = (id) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
 
   return (
     <footer className="footer">
       <div className="footer__inner">
         <div>
-          <img
-            src={darkMode ? '/images/logo_header.png' : '/images/logo_dark.png'}
-            alt="Mallys"
-            className="footer__logo-img"
-          />
+          <img src="/images/logo_header.png" alt="Mallys" className="footer__logo-img" />
           <p className="footer__desc">{L('footer_desc')}</p>
         </div>
         <div>
           <div className="footer__col-title">{L('footer_links')}</div>
           <Link href="/shop" className="footer__link">{L('nav_shop')}</Link>
           <Link href="/about" className="footer__link">{L('nav_story')}</Link>
-          <a className="footer__link" onClick={() => scrollOrNavigate('craft')}>{L('nav_process')}</a>
-          <a className="footer__link" onClick={() => scrollOrNavigate('contact')}>{L('nav_contact')}</a>
+          <a className="footer__link" onClick={() => go('craft')}>{L('nav_process')}</a>
+          <a className="footer__link" onClick={() => go('contact')}>{L('nav_contact')}</a>
         </div>
         <div>
           <div className="footer__col-title">{L('footer_legal')}</div>
