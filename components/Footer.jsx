@@ -1,10 +1,21 @@
 'use client';
 import Link from 'next/link';
 import { useApp } from './AppContext';
+import { usePathname, useRouter } from 'next/navigation';
 
 export default function Footer() {
   const { L } = useApp();
-  const go = (id) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+  const pathname = usePathname();
+  const router = useRouter();
+
+  const scrollOrNavigate = (sectionId) => {
+    if (pathname === '/') {
+      const el = document.getElementById(sectionId);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      router.push('/#' + sectionId);
+    }
+  };
 
   return (
     <footer className="footer">
@@ -17,8 +28,8 @@ export default function Footer() {
           <div className="footer__col-title">{L('footer_links')}</div>
           <Link href="/shop" className="footer__link">{L('nav_shop')}</Link>
           <Link href="/about" className="footer__link">{L('nav_story')}</Link>
-          <a className="footer__link" onClick={() => go('craft')}>{L('nav_process')}</a>
-          <a className="footer__link" onClick={() => go('contact')}>{L('nav_contact')}</a>
+          <a className="footer__link" onClick={() => scrollOrNavigate('craft')}>{L('nav_process')}</a>
+          <a className="footer__link" onClick={() => scrollOrNavigate('contact')}>{L('nav_contact')}</a>
         </div>
         <div>
           <div className="footer__col-title">{L('footer_legal')}</div>
