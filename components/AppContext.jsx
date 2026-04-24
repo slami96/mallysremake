@@ -8,27 +8,19 @@ export function AppProvider({ children }) {
   const [lang, setLang] = useState('en');
   const [cart, setCart] = useState([]);
   const [cartOpen, setCartOpen] = useState(false);
-  const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
     const savedLang = localStorage.getItem('mallys_lang');
     const savedCart = localStorage.getItem('mallys_cart');
-    const savedDark = localStorage.getItem('mallys_dark');
     if (savedLang === 'cz' || savedLang === 'en') setLang(savedLang);
     if (savedCart) { try { setCart(JSON.parse(savedCart)); } catch {} }
-    if (savedDark === 'true') setDarkMode(true);
   }, []);
 
   useEffect(() => { localStorage.setItem('mallys_lang', lang); }, [lang]);
   useEffect(() => { localStorage.setItem('mallys_cart', JSON.stringify(cart)); }, [cart]);
-  useEffect(() => {
-    localStorage.setItem('mallys_dark', darkMode);
-    document.documentElement.setAttribute('data-theme', darkMode ? 'dark' : 'light');
-  }, [darkMode]);
 
   const L = useCallback((key) => translations[key]?.[lang] || key, [lang]);
   const toggleLang = useCallback(() => setLang(p => p === 'cz' ? 'en' : 'cz'), []);
-  const toggleDark = useCallback(() => setDarkMode(p => !p), []);
 
   const addToCart = useCallback((product, qty = 1) => {
     setCart(prev => {
@@ -54,7 +46,6 @@ export function AppProvider({ children }) {
       lang, setLang, toggleLang, L,
       cart, cartCount, cartTotal, addToCart, updateQty, removeItem,
       cartOpen, setCartOpen,
-      darkMode, toggleDark,
     }}>
       {children}
     </AppContext.Provider>
