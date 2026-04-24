@@ -1,13 +1,20 @@
 'use client';
 import { useApp } from './AppContext';
 import Link from 'next/link';
+import { usePathname, useRouter } from 'next/navigation';
 
 export default function Header() {
   const { lang, setLang, L, cartCount, setCartOpen } = useApp();
+  const pathname = usePathname();
+  const router = useRouter();
 
-  const go = (id) => {
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  const scrollOrNavigate = (sectionId) => {
+    if (pathname === '/') {
+      const el = document.getElementById(sectionId);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      router.push('/#' + sectionId);
+    }
   };
 
   return (
@@ -18,10 +25,10 @@ export default function Header() {
         </Link>
 
         <nav className="header__nav">
-          <button className="header__link" onClick={() => go('story')}>{L('nav_story')}</button>
-          <button className="header__link" onClick={() => go('craft')}>{L('nav_process')}</button>
+          <button className="header__link" onClick={() => scrollOrNavigate('story')}>{L('nav_story')}</button>
+          <button className="header__link" onClick={() => scrollOrNavigate('craft')}>{L('nav_process')}</button>
           <Link href="/shop" className="header__link">{L('nav_shop')}</Link>
-          <button className="header__link" onClick={() => go('contact')}>{L('nav_contact')}</button>
+          <button className="header__link" onClick={() => scrollOrNavigate('contact')}>{L('nav_contact')}</button>
         </nav>
 
         <div className="header__right">
