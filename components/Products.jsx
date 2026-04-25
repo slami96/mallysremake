@@ -10,6 +10,9 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 function ProductCard({ p }) {
   const { lang, L, addToCart } = useApp();
   const [justAdded, setJustAdded] = useState(false);
+  const [hovered, setHovered] = useState(false);
+
+  const hoverImg = p.img.replace('_hero', '_alt');
 
   const handleAdd = (e) => {
     e.preventDefault();
@@ -20,9 +23,16 @@ function ProductCard({ p }) {
   };
 
   return (
-    <Link href={`/shop/${p.id}`} className="pcard">
+    <Link href={`/shop/${p.id}`} className="pcard"
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    >
       <div className="pcard__image-wrap">
-        <Img src={p.img} alt={p.nameCz} />
+        <Img
+          src={hovered ? hoverImg : p.img}
+          alt={p.nameCz}
+          style={{ transition: 'opacity 0.4s ease' }}
+        />
         <div className="pcard__hover-actions">
           <button className="pcard__action-btn pcard__action-btn--add" onClick={handleAdd}>
             {justAdded ? L('added_to_cart') : L('add_to_cart')}
