@@ -44,7 +44,7 @@ export default function Hero() {
       ))}
 
       <div className="hero__content">
-        <div className="hero__eyebrow"><span>Est. Broumovsko</span></div>
+        <div className="hero__eyebrow"><span>{L('hero_eyebrow')}</span></div>
         <h1 className="hero__tagline">
           <span className="hero__tagline-line">
             {line1.map((word, i) => (
@@ -58,7 +58,7 @@ export default function Hero() {
           </span>
         </h1>
         <p className="hero__sub">{L('hero_sub')}</p>
-        <button className="hero__cta" onClick={() => go('story')}>
+        <button className="hero__cta" onClick={() => go('products')}>
           <span>{L('hero_cta')}</span>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
             <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
@@ -73,7 +73,7 @@ export default function Hero() {
         ))}
       </div>
 
-      <button className="hero__scroll-chevron" onClick={() => go('story')} aria-label="Scroll down">
+      <button className="hero__scroll-chevron" onClick={() => go('products')} aria-label="Scroll down">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
           <polyline points="6 9 12 15 18 9"/>
         </svg>
