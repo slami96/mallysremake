@@ -123,7 +123,7 @@ export const translations = {
   cart_empty: { cz: "Váš košík je prázdný", en: "Your cart is empty" },
   cart_empty_cta: { cz: "Prozkoumat kolekci", en: "Explore collection" },
   cart_subtotal: { cz: "Mezisoučet", en: "Subtotal" },
-  cart_shipping: { cz: "Doprava se spočítá při platbě", en: "Shipping calculated at checkout" },
+  cart_shipping: { cz: "Doprava zdarma od 1 500 Kč", en: "Free shipping from 1,500 Kč" },
   cart_checkout: { cz: "Pokračovat k pokladně", en: "Proceed to checkout" },
   qty: { cz: "Množství", en: "Quantity" },
   remove: { cz: "Odebrat", en: "Remove" },
