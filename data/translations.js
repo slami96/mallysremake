@@ -7,11 +7,15 @@ export const translations = {
   nav_home: { cz: "Domů", en: "Home" },
 
   // Hero
+  hero_eyebrow: { cz: "Ručně vyráběno v Česku", en: "Handmade in Czech Republic" },
   hero_tagline_1: { cz: "Kde řemeslo", en: "Where craft" },
   hero_tagline_2: { cz: "přechází v umění", en: "becomes art" },
   hero_sub: { cz: "Autorský porcelán z Broumovska", en: "Artisan porcelain from Broumovsko" },
   hero_cta: { cz: "Objevte kolekci", en: "Explore collection" },
   hero_scroll: { cz: "Posouvat", en: "Scroll" },
+
+  // Shipping banner
+  shipping_banner: { cz: "Doprava zdarma při objednávce nad 1 500 Kč po celé EU", en: "Free shipping across EU on orders over 1,500 Kč" },
 
   // Story
   story_label: { cz: "O nás", en: "About" },
@@ -19,6 +23,14 @@ export const translations = {
   story_p1: { cz: "V našem ateliéru, ukrytém v zeleni krásné přírody na pomezí CHKO Broumovsko a Jestřebích hor, se věnujeme autorské práci s porcelánem.", en: "In our atelier, nestled in the beautiful nature between the Broumovsko highlands and the Jestřebí mountains, we dedicate ourselves to original work with porcelain." },
   story_p2: { cz: "Navrhujeme a vytváříme jedinečné šperky, hrnečky, misky i doplňky — vše ve vlastních limitovaných sériích, výhradně ručními postupy.", en: "We design and create unique jewelry, cups, bowls and accessories — all in our own limited series, exclusively by hand." },
   story_link: { cz: "Celý příběh", en: "Read full story" },
+
+  // Testimonials
+  testimonial_1: { cz: "Každý kousek je malé umělecké dílo. Nosím brož denně a pokaždé dostanu kompliment.", en: "Every piece is a small work of art. I wear the brooch daily and always get compliments." },
+  testimonial_1_author: { cz: "Jana K. · Praha", en: "Jana K. · Prague" },
+  testimonial_2: { cz: "Překrásný dárek pro maminku. Kvalita zpracování je na první pohled viditelná.", en: "A beautiful gift for my mother. The quality of craftsmanship is visible at first glance." },
+  testimonial_2_author: { cz: "Marie S. · Brno", en: "Marie S. · Brno" },
+  testimonial_3: { cz: "Hrneček z Mallys je můj ranní rituál. Každé ráno si s ním užívám kávu jinak.", en: "My Mallys cup is my morning ritual. Every morning I enjoy coffee differently with it." },
+  testimonial_3_author: { cz: "Katka V. · Olomouc", en: "Katka V. · Olomouc" },
 
   // About page
   about_title: { cz: "Náš příběh", en: "Our Story" },
