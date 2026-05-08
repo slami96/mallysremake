@@ -40,6 +40,10 @@ export default function AboutPage() {
         <p className="about__hero-sub">{L('about_sub')}</p>
       </div>
 
+      <div className="about__landscape">
+        <Img src="/images/site/landscape_broumovsko.jpg" alt="Broumovsko" />
+      </div>
+
       <div className="about__content">
         <div className="about__grid">
           <div className="about__img-wrap">
