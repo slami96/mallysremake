@@ -28,7 +28,7 @@ export default function Footer() {
           <div className="footer__col-title">{L('footer_links')}</div>
           <Link href="/shop" className="footer__link">{L('nav_shop')}</Link>
           <Link href="/about" className="footer__link">{L('nav_story')}</Link>
-          <a className="footer__link" onClick={() => scrollOrNavigate('craft')}>{L('nav_process')}</a>
+          <Link href="/about" className="footer__link">{L('nav_process')}</Link>
           <a className="footer__link" onClick={() => scrollOrNavigate('contact')}>{L('nav_contact')}</a>
         </div>
         <div>
