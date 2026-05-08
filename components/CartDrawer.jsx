@@ -3,6 +3,8 @@ import { useApp } from './AppContext';
 import { useRouter } from 'next/navigation';
 import Img from './Img';
 
+const FREE_SHIPPING_THRESHOLD = 1500;
+
 export default function CartDrawer() {
   const { cartOpen, setCartOpen, cart, cartTotal, updateQty, removeItem, L, lang } = useApp();
   const router = useRouter();
@@ -11,6 +13,10 @@ export default function CartDrawer() {
     setCartOpen(false);
     router.push('/checkout');
   };
+
+  const remaining = FREE_SHIPPING_THRESHOLD - cartTotal;
+  const progress = Math.min((cartTotal / FREE_SHIPPING_THRESHOLD) * 100, 100);
+  const isFree = cartTotal >= FREE_SHIPPING_THRESHOLD;
 
   return (
     <>
@@ -70,11 +76,24 @@ export default function CartDrawer() {
 
         {cart.length > 0 && (
           <div className="drawer__footer">
+            <div className="cart-shipping-progress">
+              <div className="cart-shipping-progress__bar">
+                <div className={`cart-shipping-progress__fill ${isFree ? 'cart-shipping-progress__fill--full' : ''}`}
+                  style={{ width: `${progress}%` }} />
+              </div>
+              <div className={`cart-shipping-progress__text ${isFree ? 'cart-shipping-progress__text--free' : ''}`}>
+                {isFree
+                  ? (lang === 'cz' ? '✓ Doprava zdarma' : '✓ Free shipping')
+                  : (lang === 'cz'
+                    ? `Nakupte ještě za ${remaining} Kč pro dopravu zdarma`
+                    : `Add ${remaining} Kč more for free shipping`)
+                }
+              </div>
+            </div>
             <div className="cart-total">
               <span className="cart-total__label">{L('cart_subtotal')}</span>
               <span className="cart-total__val">{cartTotal} Kč</span>
             </div>
-            <div className="cart-shipping-note">{L('cart_shipping')}</div>
             <button className="cart-checkout" onClick={handleCheckout}>{L('cart_checkout')}</button>
           </div>
         )}
