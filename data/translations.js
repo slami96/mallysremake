@@ -105,6 +105,8 @@ export const translations = {
   sort_name: { cz: "Dle názvu", en: "By Name" },
   products_count: { cz: "kousků", en: "pieces" },
   popular: { cz: "Oblíbené", en: "Popular" },
+  badge_new: { cz: "Novinka", en: "New" },
+  badge_limited: { cz: "Limitované", en: "Limited" },
 
   // Product Detail
   add_to_cart: { cz: "Přidat do košíku", en: "Add to cart" },
