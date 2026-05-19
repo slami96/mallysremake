@@ -15,7 +15,7 @@ export const categories = [
 ];
 
 export const allProducts = [
-  // ── BROOCHES ──
+  // —— BROOCHES ——
   {
     id: "brooches-01", category: "brooches",
     nameCz: "Ptáček s vločkou", nameEn: "Snowflake Bird",
@@ -62,7 +62,7 @@ export const allProducts = [
     dimensions: { cz: "cca 4 × 3 cm", en: "approx. 4 × 3 cm" },
   },
 
-  // ── EARRINGS ──
+  // —— EARRINGS ——
   {
     id: "earrings-01", category: "earrings",
     nameCz: "Sedmikrásky", nameEn: "Daisies",
@@ -107,9 +107,10 @@ export const allProducts = [
     descEn: "Porcelain knots on drops — elegant and airy.",
     material: { cz: "Porcelán, stříbro", en: "Porcelain, silver" },
     dimensions: { cz: "délka 3,5 cm", en: "length 3.5 cm" },
+    badge: "new",
   },
 
-  // ── NECKLACES ──
+  // —— NECKLACES ——
   {
     id: "necklaces-01", category: "necklaces",
     nameCz: '"Na dotek"', nameEn: '"Na dotek"',
@@ -143,6 +144,7 @@ export const allProducts = [
     descEn: "A necklace inspired by the sea — soft colors and textures that recall the coastline.",
     material: { cz: "Porcelán, stříbrný řetízek", en: "Porcelain, silver chain" },
     dimensions: { cz: "přívěsek 3 cm, řetízek 50 cm", en: "pendant 3 cm, chain 50 cm" },
+    badge: "new",
   },
   {
     id: "necklaces-04", category: "necklaces",
@@ -157,7 +159,7 @@ export const allProducts = [
     featured: true,
   },
 
-  // ── BRACELETS ──
+  // —— BRACELETS ——
   {
     id: "bracelets-01", category: "bracelets",
     nameCz: "Uzlíkový náramek", nameEn: "Knot Bracelet",
@@ -202,9 +204,10 @@ export const allProducts = [
     descEn: "A bracelet with tiny porcelain flowers — delicate and feminine.",
     material: { cz: "Porcelán, elastické lanko", en: "Porcelain, elastic wire" },
     dimensions: { cz: "obvod 17-19 cm", en: "circumference 17-19 cm" },
+    badge: "new",
   },
 
-  // ── CUPS & BOWLS ──
+  // —— CUPS & BOWLS ——
   {
     id: "cups-01", category: "cups",
     nameCz: 'Hrneček "Obláčkový" 60ml', nameEn: '"Cloud" Espresso Cup 60ml',
@@ -215,6 +218,7 @@ export const allProducts = [
     descEn: "A tiny espresso cup with cloud-textured surface — joy in every morning.",
     material: { cz: "Porcelán, vhodný do myčky", en: "Porcelain, dishwasher-safe" },
     dimensions: { cz: "objem 60 ml, výška 5 cm", en: "60 ml, height 5 cm" },
+    badge: "limited",
   },
   {
     id: "cups-02", category: "cups",
@@ -237,6 +241,7 @@ export const allProducts = [
     descEn: "A playful porcelain bowl, perfect for ice cream, müsli or small treats.",
     material: { cz: "Porcelán", en: "Porcelain" },
     dimensions: { cz: "ø 12 cm, výška 5 cm", en: "ø 12 cm, height 5 cm" },
+    badge: "limited",
   },
   {
     id: "cups-04", category: "cups",
