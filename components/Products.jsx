@@ -12,8 +12,6 @@ function ProductCard({ p }) {
   const [justAdded, setJustAdded] = useState(false);
   const [hovered, setHovered] = useState(false);
 
-  const hoverImg = p.img.replace('_hero', '_alt');
-
   const handleAdd = (e) => {
     e.preventDefault();
     e.stopPropagation();
@@ -22,20 +20,23 @@ function ProductCard({ p }) {
     setTimeout(() => setJustAdded(false), 1500);
   };
 
+  const altSrc = p.img.replace('_hero', '_alt');
+
   return (
     <Link href={`/shop/${p.id}`} className="pcard"
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-    >
+      onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
       <div className="pcard__image-wrap">
-        <Img
-          src={hovered ? hoverImg : p.img}
-          alt={p.nameCz}
-          style={{ transition: 'opacity 0.4s ease' }}
-        />
+        <Img src={hovered ? altSrc : p.img} alt={p.nameCz} />
+        {(p.featured || p.badge) && (
+          <div className="pcard__badge">{p.badge ? L(`badge_${p.badge}`) : L('popular')}</div>
+        )}
         <div className="pcard__hover-actions">
           <button className="pcard__action-btn pcard__action-btn--add" onClick={handleAdd}>
             {justAdded ? L('added_to_cart') : L('add_to_cart')}
+          </button>
+          <button className="pcard__action-btn pcard__action-btn--view"
+            onClick={(e) => { e.stopPropagation(); }}>
+            {L('quick_view')}
           </button>
         </div>
       </div>
@@ -57,13 +58,9 @@ export default function Products() {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
     const ctx = gsap.context(() => {
-      gsap.from('.products__header > *', {
-        opacity: 0, y: 30, duration: 1, stagger: 0.1, ease: 'power3.out',
-        scrollTrigger: { trigger: ref.current, start: 'top 75%' },
-      });
       gsap.from('.pcard', {
-        opacity: 0, y: 60, duration: 1, stagger: 0.1, ease: 'power3.out',
-        scrollTrigger: { trigger: '.products__grid', start: 'top 80%' },
+        opacity: 0, y: 50, duration: 1, stagger: 0.1, ease: 'power3.out',
+        scrollTrigger: { trigger: ref.current, start: 'top 75%' },
       });
     }, ref);
     return () => ctx.revert();
@@ -74,11 +71,7 @@ export default function Products() {
       <div className="products__header">
         <div>
           <div className="section__label">{L('pieces_label')}</div>
-          <h2 className="section__title">
-            {L('pieces_title').split(' ').map((w, i, a) =>
-              i === a.length - 1 ? <em key={i}>{w}</em> : <span key={i}>{w} </span>
-            )}
-          </h2>
+          <h2 className="section__title">{L('pieces_title').split(' ')[0]} <em>{L('pieces_title').split(' ').slice(1).join(' ')}</em></h2>
         </div>
       </div>
       <div className="products__grid">
