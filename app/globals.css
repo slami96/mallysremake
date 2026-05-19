@@ -457,6 +457,12 @@ a { color: inherit; text-decoration: none; }
   font-size: 9px; font-weight: 600; text-transform: uppercase;
   letter-spacing: 0.15em;
 }
+.pcard__badge--new {
+  background: var(--cobalt); color: var(--porcelain);
+}
+.pcard__badge--limited {
+  background: var(--gold); color: var(--porcelain);
+}
 .pcard__hover-actions {
   position: absolute; bottom: 0; left: 0; right: 0;
   display: flex; flex-direction: column; gap: 6px;
