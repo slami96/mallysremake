@@ -24,7 +24,9 @@ function ShopCard({ p }) {
       <div className="pcard__image-wrap">
         <Img src={p.img} alt={p.nameCz} />
         {(p.featured || p.badge) && (
-          <div className="pcard__badge">{p.badge ? L(`badge_${p.badge}`) : L('popular')}</div>
+          <div className={`pcard__badge ${p.badge === 'new' ? 'pcard__badge--new' : ''} ${p.badge === 'limited' ? 'pcard__badge--limited' : ''}`}>
+            {p.badge ? L(`badge_${p.badge}`) : L('popular')}
+          </div>
         )}
         <div className="pcard__hover-actions">
           <button className="pcard__action-btn pcard__action-btn--add" onClick={handleAdd}>
