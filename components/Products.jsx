@@ -27,9 +27,7 @@ function ProductCard({ p }) {
       onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
       <div className="pcard__image-wrap">
         <Img src={hovered ? altSrc : p.img} alt={p.nameCz} />
-        {(p.featured || p.badge) && (
-          <div className="pcard__badge">{p.badge ? L(`badge_${p.badge}`) : L('popular')}</div>
-        )}
+
         <div className="pcard__hover-actions">
           <button className="pcard__action-btn pcard__action-btn--add" onClick={handleAdd}>
             {justAdded ? L('added_to_cart') : L('add_to_cart')}
